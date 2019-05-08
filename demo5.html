@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="host"></div>
+ 
+  <script>
+    const elem = document.querySelector('#host')
+    const shadowRoot = elem.attachShadow({mode: 'open'})
+  
+    shadowRoot.innerHTML = `
+      <p>Shadow DOM</p>
+      <style>
+        :host {
+          display: inline-block;
+          border: solid 3px #ccc;
+          padding: 0 15px;
+        }
+      </style>`
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="host"><p>Default text</p></div>
+  
+  <script>
+    const elem = document.querySelector('#host')
+
+    // attach a shadow root to #host
+    const shadowRoot = elem.attachShadow({mode: 'open'})
+
+    // create a <p> element
+    const p = document.createElement('p')
+
+    // add <p> to the shadow DOM
+    shadowRoot.appendChild(p)
+
+    // add text to <p> 
+    p.textContent = 'Hello!'
+  </script>
+</body>
+</html>

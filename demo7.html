@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    div {
+      font-size: 25px;
+      text-transform: uppercase;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div><p>Light DOM</p></div>
+  <div id="host"></div>
+
+  <script>
+    const elem = document.querySelector('#host')
+    const shadowRoot = elem.attachShadow({mode: 'open'})
+
+    // shadowRoot.innerHTML = `<p>Shadow DOM</p>`
+    shadowRoot.innerHTML = `
+      <p>Shadow DOM</p>
+      <style>
+        :host p {
+          all: initial;
+        }
+      </style>
+    `
+  </script> 
+</body>
+</html>

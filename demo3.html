@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div><p>Light DOM</p></div>
+  <div id="host"></div>
+  <video src="" poster="" controls></video>
+
+  <script>
+    const elem = document.querySelector('#host')
+ 
+    // attach an open shadow root to #host
+    const shadowRoot = elem.attachShadow({mode: 'closed'})
+
+    console.log(shadowRoot.mode)
+
+    shadowRoot.innerHTML = `<p>Shadow DOM</p>`;
+    // Nodes of an open shadow DOM are accessible
+    // from outside the shadow root
+    elem.shadowRoot.querySelector('p').innerText = 'Changed from outside the shadow root'
+    elem.shadowRoot.querySelector('p').style.color = 'red'
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    p {color: red;}
+  </style>
+</head>
+<body>
+  <div><p>Light DOM</p></div>
+  <div id="host"></div>
+  
+  <pre>
+    在light DOM中定义的样式不能越过shadow边界。因此，只有light DOM中的段落才会变为红色
+    相反，你添加到shadow DOM的CSS对于hosting元素来说是本地的，不会影响DOM中的其他元素
+    在shadow中也可以引入外部样式表
+  </pre>
+
+  <script>
+    const elem = document.querySelector('#host')
+
+    // attach a shadow root to #host
+    const shadowRoot = elem.attachShadow({mode: 'open'})
+
+    console.log(shadowRoot.host)
+
+    console.log(elem.shadowRoot)
+
+    shadowRoot.innerHTML = `
+      <p>Shadow DOM</p>
+      <h1>外部样式</h1>
+      <style>
+        p {color: green;}
+      </style>
+      <link rel="stylesheet" href="./style.css">
+    `
+  </script>
+</body>
+</html>

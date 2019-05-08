@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <my-element></my-element>
+  <script>
+    class MyElement extends HTMLElement {
+      constructor() {
+        super()
+        // attach a shadow root to <my-element>
+        const shadowRoot = this.attachShadow({mode: 'open'})
+  
+        shadowRoot.innerHTML = `
+          <style>p {color: red}</style>
+          <p>Hello</p>`
+      }
+    }
+  
+    // register a custom element on the page
+    customElements.define('my-element', MyElement)
+  </script>
+</body>
+</html>
